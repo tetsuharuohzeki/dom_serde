@@ -1,0 +1,12 @@
+{
+    "name": "js-boilerplate",
+    "version": "0.0.0",
+    "type": "module",
+    "repository": "git@github.com:tetsuharuohzeki/js-boilerplate.git",
+    "author": "Tetsuharu Ohzeki <tetsuharu.ohzeki@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "prettier": "^2.2.1",
+        "typescript": "^4.2.2"
+    }
+}

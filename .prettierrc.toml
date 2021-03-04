@@ -1,0 +1,12 @@
+# https://prettier.io/docs/en/configuration.html
+
+semi = true
+singleQuote = true
+tabWidth = 4
+useTabs = false
+printWidth = 120
+
+[[overrides]]
+    files = "*.css"
+    [overrides.options]
+    printWidth = 256
