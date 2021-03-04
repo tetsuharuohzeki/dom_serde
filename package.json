@@ -1,8 +1,8 @@
 {
-    "name": "js-boilerplate",
+    "name": "dom_serde",
     "version": "0.0.0",
     "type": "module",
-    "repository": "git@github.com:tetsuharuohzeki/js-boilerplate.git",
+    "repository": "git@github.com:tetsuharuohzeki/dom_serde.git",
     "author": "Tetsuharu Ohzeki <tetsuharu.ohzeki@gmail.com>",
     "license": "MIT",
     "devDependencies": {
