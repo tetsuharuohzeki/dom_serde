@@ -27,10 +27,7 @@ export interface SerializedElement extends SerializedNode {
 
 export interface SerializedAttribute {
     name: string;
-    // TODO: Handle React JSX's props limitation
-    //  - https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/shared/possibleStandardNames.js
-    //  - https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/shared/DOMProperty.js
-    // reactName?: Nullable<string>;
+    reactName: Nullable<string>;
     value: string;
 }
 

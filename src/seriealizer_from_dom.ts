@@ -8,6 +8,8 @@ import {
     SerializedText,
 } from './tree_ir';
 
+import possibleStandardNames from './third_party/react/possibleStandardNames';
+
 export function serializeTree(root: DocumentFragment): SerializedFragment {
     const children = serializeChildNodes(root);
     const result: SerializedFragment = {
@@ -85,11 +87,10 @@ function serializeAttributes(element: Element): Array<SerializedAttribute> {
         const name = real.name;
         const value = real.value;
 
-        // TODO: Handle React JSX's props limitation
-        //  - https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/shared/possibleStandardNames.js
-        //  - https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/shared/DOMProperty.js
+        const reactName: Nullable<string> = possibleStandardNames[name] ?? null;
         const serialized: SerializedAttribute = {
             name,
+            reactName,
             value,
         };
 
