@@ -2,14 +2,19 @@ import { Nullable } from 'option-t/esm/Nullable/Nullable';
 import { assertIsSerializedElement, assertIsSerializedText } from './assertion/tree_ir';
 import { SerializedElement, SerializedFragment, SerializedNode, SerializedNodeType, SerializedText } from './tree_ir';
 
-export function deserializeTree(root: SerializedFragment): DocumentFragment {
+export function deserializeTree(root: SerializedFragment): Nullable<DocumentFragment> {
     const fragment = deserializeChildNodes(root);
     return fragment;
 }
 
-function deserializeChildNodes(root: SerializedNode): DocumentFragment {
+function deserializeChildNodes(root: SerializedNode): Nullable<DocumentFragment> {
+    const children = root.children;
+    if (children.length === 0) {
+        return null;
+    }
+
     const fragment = document.createDocumentFragment();
-    for (const child of root.children) {
+    for (const child of children) {
         const node = deserializeNode(child);
         if (!node) {
             continue;
@@ -45,7 +50,9 @@ function deserializeElement(root: SerializedElement): Element {
     }
 
     const fragment = deserializeChildNodes(root);
-    element.appendChild(fragment);
+    if (fragment !== null) {
+        element.appendChild(fragment);
+    }
 
     return element;
 }
