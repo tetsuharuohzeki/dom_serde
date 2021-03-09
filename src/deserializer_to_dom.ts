@@ -1,9 +1,10 @@
 import { Nullable } from 'option-t/esm/Nullable/Nullable';
+import { assertIsSerializedElement, assertIsSerializedText } from './assertion/tree_ir';
 import { SerializedElement, SerializedFragment, SerializedNode, SerializedNodeType, SerializedText } from './tree_ir';
 
 export function deserializeTree(root: SerializedFragment): DocumentFragment {
     const fragment = deserializeChildNodes(root);
-    return fragment
+    return fragment;
 }
 
 function deserializeChildNodes(root: SerializedNode): DocumentFragment {
@@ -23,13 +24,13 @@ function deserializeChildNodes(root: SerializedNode): DocumentFragment {
 function deserializeNode(root: SerializedNode): Nullable<Node> {
     switch (root.type) {
         case SerializedNodeType.Element:
-            // @ts-expect-error
+            assertIsSerializedElement(root);
             return deserializeElement(root);
         case SerializedNodeType.Text:
-            // @ts-expect-error
+            assertIsSerializedText(root);
             return deserializeTextNode(root);
         default:
-            throw new TypeError();
+            throw new TypeError(`unknown SerializedNodeType: ${root.type}`);
     }
 }
 

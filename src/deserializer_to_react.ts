@@ -1,5 +1,6 @@
 import { Nullable } from 'option-t/esm/Nullable/Nullable';
 import * as React from 'react';
+import { assertIsSerializedElement, assertIsSerializedText } from './assertion/tree_ir';
 import { SerializedElement, SerializedFragment, SerializedNode, SerializedNodeType, SerializedText } from './tree_ir';
 
 type MaterialNode = React.ReactChild;
@@ -14,25 +15,28 @@ function deserializeChildNodes(root: SerializedNode): Array<MaterialNode> {
     const children: Array<MaterialNode> = [];
     for (const child of root.children) {
         const node = deserializeNode(child);
+        if (!node) {
+            continue;
+        }
         children.push(node);
     }
 
     return children;
 }
 
-function deserializeNode(root: SerializedNode): MaterialNode {
-    let serialized: MaterialNode;
+function deserializeNode(root: SerializedNode): Nullable<MaterialNode> {
+    let serialized: Nullable<MaterialNode>;
     switch (root.type) {
         case SerializedNodeType.Element:
-            // @ts-expect-error
+            assertIsSerializedElement(root);
             serialized = deserializeElement(root);
             break;
         case SerializedNodeType.Text:
-            // @ts-expect-error
+            assertIsSerializedText(root);
             serialized = deserializeTextNode(root);
             break;
         default:
-            throw new TypeError();
+            throw new TypeError(`unknown SerializedNodeType: ${root.type}`);
     }
 
     return serialized;

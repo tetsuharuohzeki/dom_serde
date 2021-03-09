@@ -1,4 +1,4 @@
-import { Nullable } from 'option-t/esm/Nullable/Nullable';
+import type { Nullable } from 'option-t/esm/Nullable/Nullable';
 
 // We would like to sort with https://dom.spec.whatwg.org/#dom-node-nodetype
 export enum SerializedNodeType {

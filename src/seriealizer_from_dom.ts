@@ -9,6 +9,7 @@ import {
 } from './tree_ir';
 
 import possibleStandardNames from './third_party/react/possibleStandardNames';
+import { isDomElement, isDomTextNode } from './assertion/dom';
 
 export function serializeTree(root: DocumentFragment): SerializedFragment {
     const children = serializeChildNodes(root);
@@ -39,23 +40,16 @@ function serializeChildNodes(root: Node): Array<SerializedNode> {
 }
 
 function serializeRealNode(root: Node): Nullable<SerializedNode> {
-    let serialized = null;
-    // see https://dom.spec.whatwg.org/#dom-node-nodetype
-    switch (root.nodeType) {
-        case 1: // ELEMENT_NODE
-            // @ts-expect-error
-            serialized = serializeRealElement(root);
-            break;
-        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-        case 3: // TEXT_NODE
-            // @ts-expect-error
-            serialized = serializeRealTextNode(root);
-            break;
-        default:
-            serialized = null;
+    if (isDomElement(root)) {
+        return serializeRealElement(root);
     }
 
-    return serialized;
+    if (isDomTextNode(root)) {
+        return serializeRealTextNode(root);
+    }
+
+    // unsupported node
+    return null;
 }
 
 function serializeRealElement(root: Element): SerializedElement {
