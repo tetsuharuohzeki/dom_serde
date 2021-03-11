@@ -27,7 +27,7 @@ __clean_dist:
 ###########################
 # Build
 ###########################
-.PHONY: Build
+.PHONY: build
 build: __clean_dist ## Generate JS files.
 	$(NPM_BIN)/tsc --outDir $(DIST_DIR)/
 
@@ -35,6 +35,13 @@ build: __clean_dist ## Generate JS files.
 ###########################
 # Testing
 ###########################
+.PHONY: test
+test: build ## Build and run unit tests
+	$(MAKE) run_ava
+
+.PHONY: run_ava
+run_ava: ## Run unit test without building tests
+	$(NPM_BIN)/ava --config $(CURDIR)/ava.config.cjs
 
 
 ###########################
