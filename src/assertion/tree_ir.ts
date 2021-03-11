@@ -1,4 +1,4 @@
-import { SerializedElement, SerializedNode, SerializedNodeType, SerializedText } from '../tree_ir';
+import { SerializedElement, SerializedNode, SerializedNodeType, SerializedText } from '../tree_ir.js';
 
 function assertIs<T extends SerializedNode>(
     v: SerializedNode,

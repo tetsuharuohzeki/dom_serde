@@ -7,7 +7,6 @@ export enum SerializedNodeType {
     Text = 3,
     DocumentFragment = 11,
 }
-
 export interface SerializedNode {
     type: SerializedNodeType;
     children: Array<SerializedNode>;
