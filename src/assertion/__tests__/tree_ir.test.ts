@@ -8,10 +8,7 @@ import {
     SerializedText,
 } from '../../tree_ir.js';
 
-import {
-    assertIsSerializedElement,
-    assertIsSerializedText,
-} from '../tree_ir.js';
+import { assertIsSerializedElement, assertIsSerializedText } from '../tree_ir.js';
 
 const unknown: SerializedNode = {
     type: SerializedNodeType.Unknown,
@@ -62,7 +59,6 @@ const text: SerializedText = {
         });
     }
 }
-
 
 {
     const testcase: Array<[node: SerializedNode, shouldThrow: boolean]> = [

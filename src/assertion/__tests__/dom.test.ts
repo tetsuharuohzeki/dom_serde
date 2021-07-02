@@ -38,9 +38,9 @@ test.before(() => {
     attrNode = document.createAttribute('attr');
     textNode = document.createTextNode('text');
 
-    const xmlDoc = new window.DOMParser().parseFromString('<xml></xml>', 'application/xml')
+    const xmlDoc = new window.DOMParser().parseFromString('<xml></xml>', 'application/xml');
     cdataNode = xmlDoc.createCDATASection('cdata');
-    
+
     processingInstructionNode = document.createProcessingInstruction('processing', 'inst');
     commentNode = document.createComment('comment');
     documentNode = document;
