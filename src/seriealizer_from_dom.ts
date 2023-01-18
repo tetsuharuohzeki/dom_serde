@@ -6,10 +6,10 @@ import {
     SerializedNode,
     SerializedNodeType,
     SerializedText,
-} from './tree_ir';
+} from './tree_ir.js';
 
-import possibleStandardNames from './third_party/react/possibleStandardNames';
-import { isDomElement, isDomTextNode } from './assertion/dom';
+import possibleStandardNames from './third_party/react/possibleStandardNames.js';
+import { isDomElement, isDomTextNode } from './assertion/dom.js';
 
 export function serializeTree(root: DocumentFragment): SerializedFragment {
     const children = serializeChildNodes(root);

@@ -1,7 +1,13 @@
 import { Nullable } from 'option-t/esm/Nullable/Nullable';
 import * as React from 'react';
-import { assertIsSerializedElement, assertIsSerializedText } from './assertion/tree_ir';
-import { SerializedElement, SerializedFragment, SerializedNode, SerializedNodeType, SerializedText } from './tree_ir';
+import { assertIsSerializedElement, assertIsSerializedText } from './assertion/tree_ir.js';
+import {
+    SerializedElement,
+    SerializedFragment,
+    SerializedNode,
+    SerializedNodeType,
+    SerializedText,
+} from './tree_ir.js';
 
 type MaterialNode = React.ReactChild;
 type MaterialText = React.ReactText;

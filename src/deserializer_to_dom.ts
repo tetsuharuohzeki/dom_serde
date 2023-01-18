@@ -1,6 +1,12 @@
 import { Nullable } from 'option-t/esm/Nullable/Nullable';
-import { assertIsSerializedElement, assertIsSerializedText } from './assertion/tree_ir';
-import { SerializedElement, SerializedFragment, SerializedNode, SerializedNodeType, SerializedText } from './tree_ir';
+import { assertIsSerializedElement, assertIsSerializedText } from './assertion/tree_ir.js';
+import {
+    SerializedElement,
+    SerializedFragment,
+    SerializedNode,
+    SerializedNodeType,
+    SerializedText,
+} from './tree_ir.js';
 
 export function deserializeTree(root: SerializedFragment): Nullable<DocumentFragment> {
     const fragment = deserializeChildNodes(root);
