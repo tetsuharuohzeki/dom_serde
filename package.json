@@ -20,6 +20,6 @@
         "typescript": "^4.9.4"
     },
     "dependencies": {
-        "option-t": "^33.1.1"
+        "option-t": "^34.0.0"
     }
 }
